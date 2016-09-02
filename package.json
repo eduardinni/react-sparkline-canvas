@@ -1,0 +1,65 @@
+{
+  "name": "react-sparkline-canvas",
+  "version": "0.0.1",
+  "description": "React component for simple sparklines based on <canvas>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eduardinni/react-sparkline-canvas"
+  },
+  "author": "Eduardo Lomeli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eduardinni/react-sparkline-canvas/issues"
+  },
+  "homepage": "https://github.com/eduardinni/react-sparkline-canvas",
+  "keywords": [
+    "react",
+    "react-component",
+    "chart",
+    "charts",
+    "sparkline",
+    "sparklines",
+    "canvas"
+  ],
+  "options": {
+    "mocha": "--require scripts/mocha_runner src/**/__tests__/**/*.js"
+  },
+  "scripts": {
+    "prepublish": "babel --plugins 'transform-es2015-modules-umd' src --ignore __tests__ --out-dir ./dist",
+    "lint": "eslint ./src",
+    "lintfix": "eslint ./src --fix",
+    "testonly": "mocha $npm_package_options_mocha",
+    "test": "npm run lint && npm run testonly",
+    "test-watch": "npm run testonly -- --watch --watch-extensions js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.4.0",
+    "eslint": "^3.4.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-flowtype": "2.11.4",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0",
+    "jsdom": "^9.4.0",
+    "mocha": "^3.0.0",
+    "nodemon": "^1.10.0",
+    "react-addons-test-utils": "^15.0.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "peerDependencies": {
+    "react": "~0.14.8 || ^15.0.0",
+    "react-dom": "~0.14.8 || ^15.0.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.9.2"
+  }
+}
