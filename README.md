@@ -5,8 +5,11 @@ React component for sparkline charts based on `<canvas>`
 ## Demo
 
 ![line](http://i.imgur.com/tUHDyyI.png)
+
 ![step](http://i.imgur.com/8fEJ4dl.png)
-![ampl](http://i.imgur.com/JYUHlFy.png) ![refl](http://i.imgur.com/wasC0Nu.png)
+
+![ampl](http://i.imgur.com/JYUHlFy.png)
+![refl](http://i.imgur.com/wasC0Nu.png)
 
 
 ## Getting started
@@ -88,7 +91,7 @@ The following props only work for `amplitude` sparkline type:
 
 ## strokeColor
 
-### Solid
+### a. Solid
 
 Pass a CSS color value as `string` to `strokeColor` prop.
 
@@ -102,7 +105,7 @@ Examples:
 <Sparkline strokeColor={'rgba(255,0,0,.5)'} />
 ```
 
-### Gradient
+### b. Gradient
 
 Pass an `object` to `strokeColor` prop, each property represents a color stop.
 
@@ -146,7 +149,7 @@ Examples:
 />
 ```
 
-### Reflected type
+### c. Reflected type
 
 Pass an `array` to `strokeColor` prop, the first element represents main color and second one represents reflection color.
 
