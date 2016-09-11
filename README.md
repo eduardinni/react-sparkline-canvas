@@ -1,10 +1,11 @@
 # react-sparkline-canvas
 
-React component for simple sparklines based on `<canvas>`
+React component for sparkline charts based on `<canvas>`
 
 ## Demo
 
-![demo](http://i.imgur.com/izeIldk.png)
+![line](http://i.imgur.com/tUHDyyI.png) ![step](http://i.imgur.com/8fEJ4dl.png)
+![ampl](http://i.imgur.com/JYUHlFy.png) ![refl](http://i.imgur.com/wasC0Nu.png)
 
 ## Getting started
 
@@ -17,37 +18,138 @@ import Sparkline from 'react-sparkline-canvas';
 
 ## Usage
 
-**Basic Example**
+**Basic example**
 ```js
 <Sparkline
-  dataPoints={[1,2,3,3,4,7,5,8,6,2,5,7,6]}
+  data={[1,2,3,3,4,7,5,8,6,2,5,7,6]}
   width={200}
   height={200}
 />
 ```
 
-**Advanced Example**
+**Advanced example**
 ```js
 <Sparkline
-  dataPoints={[1,2,3,4,5,5.5,5.8,6,5.4,4.8,3,2,2,6,7,8,9,10,10,7,6,7,7,8,20]}
-  width={700}
-  height={450}
-  lineWidth={6}
-  initialColor={"#007AC9"}
-  endColor={"#00c972"}      
+  data={[0,1,0,0,-5,6,0,0,3,4,1,5,4,4,-1, -8, 12]}
+  type={'step'}
+  width={800}
+  height={400}
+  padding={40}
+  lineWidth={3}
+  className={'somecss'}   
+  strokeColor={{
+    '20': '#ff355b',
+    '30': '#ffc835',
+    '45': '#32647d',
+    '50': '#41828c',
+    '85': '#22822c',
+  }}
+  gradDirection={'column'}
+  showMinMax={false}
 />
 ```
 
 ## Props
 
-| Prop  | Default  | Type | Description |
-| :------------ |:---------------:| :---------------:| :-----|
-| dataPoints | - | `array` | Values to plot, e.g. `[1,2,3,4,5]` |
-| width | `null` | `number` | Required when `width` not defined in CSS className |
-| height | `null` | `number` | Required when `height` not defined in CSS className |
+| Prop | Default | PropType | Description |
+| :--- | :-----: | :------: | :---------- |
+| data | - | `array` | Values to plot, e.g. `[1,2,3,4,5]` |
+| type | `line` | `string` | `line`, `step`, `amplitude`, `reflected` |
+| width | `200` | `number` | Required |
+| height | `60` | `number` | Required |
+| padding | `20` | `number` | Canvas padding |
 | className | `null` | `string` | CSS class name applied to `canvas` wrapper |
 | lineWidth | `3` | `number` | Thickness of the sparkline |
-| initialColor | `#000000` | `string` | Color for first stop of gradient |
-| endColor | `#000000` | `string` | Color for end stop of gradient |
-| startMarker | `true` | `bool` | Set to `false` make start dot marker hidden. |
-| finalMarker | `true` | `bool` | Set to `false` make final dot marker hidden. |
+| strokeColor | `#000000` | `string | object | array` | See [strokeColor](#strokeColor) |
+| gradDirection | `column` | `string` | Gradient direction: `column` or `row` |
+| showMinMax | `true` | `bool` | Shows min/max value dot marker when `true` |
+
+The following props only work for `amplitude` sparkline type:
+
+| Prop | Default | PropType | Description |
+| :--- | :-----: | :------: | :---------- |
+| baseline | `true` | `bool` | Displays a baseline in the vertical middle when `true` |
+| baselineColor | `#cccccc` | `string` | `line`, `step`, `amplitude`, `reflected` |
+
+## Sparkline types
+
+| type | strokeColor | Responsive Plot | Constraints |
+| :--- | :---------: | :-------------: | :---------- |
+| `line` | Solid or Gradient | Width and Height |
+| `step` | Solid or Gradient | Width and Height |
+| `amplitude` | Solid or Gradient | Height only | Plots only positive numbers, negatives and zeros are plotted as blank |
+| `reflected` | Solid (2 colors) | Height only | Plots only positive numbers, negatives and zeros are plotted as blank |
+
+## strokeColor
+
+#### Solid
+
+Pass a CSS color value as `string` to `strokeColor` prop.
+
+Examples:
+
+```js
+<Sparkline strokeColor={'#ff0000'} />
+
+<Sparkline strokeColor={'red'} />
+
+<Sparkline strokeColor={'rgba(255,0,0,.5)'} />
+```
+
+#### Gradient
+
+Pass an `object` to `strokeColor` prop, each property represents a color stop.
+
+```js
+{
+  stop: 'color',
+  stop: 'color',
+  stop: 'color'
+}
+```
+
+| `stop` | A value between 0 and 100 that represents the position between start and end in a gradient |
+| `color` | A CSS color value to display at the stop position |
+
+**Gradient direction**
+
+| gradDirection | Description |
+| :------------ | :---------- |
+| `column` | Vertically from top (0) to bottom (100) |
+| `row` | Horizontally from left (0) to right (100) |
+
+Examples:
+
+```js
+<Sparkline
+  strokeColor={{
+    '20': '#ff355b',
+    '30': '#ffc835',
+    '45': '#32647d',
+    '50': '#41828c',
+    '85': '#22822c',
+  }}
+/>
+
+<Sparkline
+  strokeColor={{
+    '0': '#007AC9',
+    '100': '#00c972',
+  }}
+  gradDirection={'row'}
+/>
+```
+
+#### Gradient
+
+Pass an `array` to `strokeColor` prop, the first element represents main color and second one represents reflection color.
+
+```js
+[mainColor, reflectionColor]
+```
+
+Example:
+
+```js
+<Sparkline strokeColor={['#8c8c8c', '#e6e6e6']} />
+```

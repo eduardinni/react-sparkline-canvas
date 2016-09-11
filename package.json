@@ -1,7 +1,7 @@
 {
   "name": "react-sparkline-canvas",
-  "version": "0.0.1",
-  "description": "React component for simple sparklines based on <canvas>",
+  "version": "0.1.0",
+  "description": "React component for sparkline charts based on <canvas>",
   "repository": {
     "type": "git",
     "url": "https://github.com/eduardinni/react-sparkline-canvas"
