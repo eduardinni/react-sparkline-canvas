@@ -4,8 +4,10 @@ React component for sparkline charts based on `<canvas>`
 
 ## Demo
 
-![line](http://i.imgur.com/tUHDyyI.png) ![step](http://i.imgur.com/8fEJ4dl.png)
+![line](http://i.imgur.com/tUHDyyI.png)
+![step](http://i.imgur.com/8fEJ4dl.png)
 ![ampl](http://i.imgur.com/JYUHlFy.png) ![refl](http://i.imgur.com/wasC0Nu.png)
+
 
 ## Getting started
 
@@ -15,6 +17,7 @@ npm install react-sparkline-canvas --save
 ```js
 import Sparkline from 'react-sparkline-canvas';
 ```
+
 
 ## Usage
 
@@ -49,6 +52,7 @@ import Sparkline from 'react-sparkline-canvas';
 />
 ```
 
+
 ## Props
 
 | Prop | Default | PropType | Description |
@@ -60,7 +64,7 @@ import Sparkline from 'react-sparkline-canvas';
 | padding | `20` | `number` | Canvas padding |
 | className | `null` | `string` | CSS class name applied to `canvas` wrapper |
 | lineWidth | `3` | `number` | Thickness of the sparkline |
-| strokeColor | `#000000` | `string | object | array` | See [strokeColor](#strokeColor) |
+| strokeColor | `#000000` | `string | object | array` | See [strokeColor](#strokecolor) |
 | gradDirection | `column` | `string` | Gradient direction: `column` or `row` |
 | showMinMax | `true` | `bool` | Shows min/max value dot marker when `true` |
 
@@ -71,6 +75,7 @@ The following props only work for `amplitude` sparkline type:
 | baseline | `true` | `bool` | Displays a baseline in the vertical middle when `true` |
 | baselineColor | `#cccccc` | `string` | `line`, `step`, `amplitude`, `reflected` |
 
+
 ## Sparkline types
 
 | type | strokeColor | Responsive Plot | Constraints |
@@ -80,9 +85,10 @@ The following props only work for `amplitude` sparkline type:
 | `amplitude` | Solid or Gradient | Height only | Plots only positive numbers, negatives and zeros are plotted as blank |
 | `reflected` | Solid (2 colors) | Height only | Plots only positive numbers, negatives and zeros are plotted as blank |
 
+
 ## strokeColor
 
-#### Solid
+### Solid
 
 Pass a CSS color value as `string` to `strokeColor` prop.
 
@@ -96,7 +102,7 @@ Examples:
 <Sparkline strokeColor={'rgba(255,0,0,.5)'} />
 ```
 
-#### Gradient
+### Gradient
 
 Pass an `object` to `strokeColor` prop, each property represents a color stop.
 
@@ -107,16 +113,16 @@ Pass an `object` to `strokeColor` prop, each property represents a color stop.
   stop: 'color'
 }
 ```
+`stop` is a value between 0 and 100 that represents the position between start and end in a gradient.
 
-| `stop` | A value between 0 and 100 that represents the position between start and end in a gradient |
-| `color` | A CSS color value to display at the stop position |
+`color` is a CSS color value to display at the stop position.
 
-**Gradient direction**
+**Gradient direction prop**
 
 | gradDirection | Description |
 | :------------ | :---------- |
-| `column` | Vertically from top (0) to bottom (100) |
-| `row` | Horizontally from left (0) to right (100) |
+| `column` | Top to bottom |
+| `row` | Left to right |
 
 Examples:
 
@@ -140,7 +146,7 @@ Examples:
 />
 ```
 
-#### Gradient
+### Reflected type
 
 Pass an `array` to `strokeColor` prop, the first element represents main color and second one represents reflection color.
 
