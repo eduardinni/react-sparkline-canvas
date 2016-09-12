@@ -4,7 +4,6 @@ react-sparkline-canvas
 [![npm Version](https://img.shields.io/npm/v/react-sparkline-canvas.svg)](https://www.npmjs.com/package/react-sparkline-canvas) [![License](https://img.shields.io/npm/l/react-sparkline-canvas.svg)](https://www.npmjs.com/package/react-sparkline-canvas)
 [![Dependency Status](https://david-dm.org/eduardinni/react-sparkline-canvas.svg)](https://david-dm.org/eduardinni/react-sparkline-canvas)
 
-
 React component for sparkline charts based on `<canvas>`
 
 ## Demo
